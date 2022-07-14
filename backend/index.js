@@ -3,5 +3,5 @@ const mongoose = require ("mongoose");
 const app =express();
 
 app.listen(9000, ()=>{
-    console.log("Backend server")
+    console.log("Backend server is running!");
 })
