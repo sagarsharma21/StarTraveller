@@ -9,6 +9,7 @@ mongoose.connect(process.env.MONGO_CONNECT,{useNewUrlParser:true})
     console.log("MongoDB connected successfully!");
 }).catch((err)=>console.log(err));
 
+
 app.listen(9000, ()=>{
     console.log("Backend server is running!");
-})
+});
