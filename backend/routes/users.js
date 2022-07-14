@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt');
 router.post("/register", async (req,res) =>{
     try{
  
-        //generate new pwd
+        //generate new pwd 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt)
 
@@ -34,8 +34,8 @@ router.post("/login", async(req,res) =>{
 try{
     
     //find user
-const user = await User.findOne({username:req.body.username})
-!user && req.status(400).json("Invalid!")
+const user = await User.findOne({username:req.body.username});
+!user && req.status(400).json("Invalid!");
 
     //validate pwd
 const validPassword = await bcrypt.compare(
