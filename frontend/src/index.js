@@ -8,6 +8,7 @@ root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
+  document.querySelector('#app')
  // document.getElementById('root')
 );
 

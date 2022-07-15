@@ -1,1 +1,13 @@
 This is first notepad file!!
+
+//npm install @mui/icons-material
+//threw emotion not resolved error
+//npm uninstall ^^
+
+
+//npm install @mui/material @emotion/react @emotion/styled
+//throws error could not resolve @mui/icons-material/Room
+
+
+//npm install @mui/icons-material
+//Icon appeared, works fine
