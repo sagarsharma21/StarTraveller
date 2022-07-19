@@ -1,0 +1,30 @@
+.card{
+    size: 400px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+label{
+    color:violet;
+    font-size: 16px;
+    border-bottom: 1px solid red;
+    margin: 4px 0;
+}
+
+.desc {
+    font-size:16 px ;
+
+}
+
+.star {
+color: orange;
+
+}
+
+.username {
+    font-size: 14;
+}
+
+

@@ -10,62 +10,186 @@ import { Popup } from 'react-map-gl';
 //import pngloc from './pngloc.jpg';
 import RoomIcon from '@mui/icons-material/Room';
 import { lime } from '@mui/material/colors';
+import "./App.css";
+import axios from "axios";
+
+//importing star icon from material-ui
+import StarBorderIcon from '@mui/icons-material/StarBorder';
+
+//import usestate
+import { useState } from 'react';
+import mapboxgl from 'mapbox-gl';
 
 
 //trying viewport
 const viewport={width:400,height:600};
-const setViewport={width:window,height:window}
-//fine till herr
+//const setViewport={width:window,height:window}
+
+//fine till her
 
 //end of this snippet
 
+
+/*// {}
+const popup = new mapboxgl.Popup({offset: popupOffsets, className: 'my-class'})
+.setLngLat(e.lngLat)
+.setHTML("<h1>Hello World!</h1>")
+.setMaxWidth("300px")
+.addTo(map);
+// {}*/
+
 function App() {
+  const [pins,setPins] = useState([]);
+  //start of this code snip
+  const setViewport= useState({
+    width:"100vw",
+    height:"100vh",
+    latitude:28,
+    longitude:77,
+    zoom:4,
+  });
+//end of this code snip
+
+ const [showPopup, setShowPopup]= React.useState(true);
+
+ // Create a new marker.
+  const marker = new mapboxgl.Marker()
+    .setLngLat([77.229, 28.612]);
+  //edit 19/7-1
   
+  //exit 19/7-1
+  
+  // useEffect(() => {
+  // const getPins =async ()=>{
+  //   try{
+  //     const res = await axios.get("/pins");
+  //     setPins(res.data);
+  //   }
+  //   catch(err){console.log(err);}
+  // };
+  // getPins()
+  // },[]);
+
   return (
-    <Map
-    mapboxAccessToken={process.env.REACT_APP_MYURL }
-    {...viewport}
-    onViewportChange={(nextViewport)=>setViewport  (nextViewport)}
+    <div className='map'>
+      <Map
+          mapboxAccessToken={process.env.REACT_APP_MYURL }
+            {...viewport}
+            //onViewportChange={(nextViewport)=>setViewport(nextViewport)}
+            mapStyle="mapbox://styles/mapbox/streets-v9"
 
+        initialViewState=
+          {{
+            latitude:28.612,
+            longitude:77.229,
+            zoom:14
+          }}
 
-    initialViewState={{
-          latitude:28.612,
-          longitude:77.229,
-          zoom:8
-        }}
-style={{width:"100vw",height:"100vh"}}
-mapStyle="mapbox://styles/mapbox/streets-v9"
-    >
-      {/* //markerstart */}
-      <Marker 
+          
+        style=
+          {{
+            width:"100vw",height:"100vh"
+          }}
+      >    
+
       
-       latitude={28.612}
-      longitude={77.229}
-       color={'#FF0000'} 
-        offsetLeft={10} 
-        offsetTop={-20}
-         offsetBottom={-30}
-        pitchAlignment={'map'}
-        scale={2}
-        draggable={true}
-         anchor="left">
-         
-          {/* <img src="./src/pngloc.jpg" alt='img'/> */}
-          <div style={{fontSize:16, color:'lime' }}>YOU are Here</div>
-        <RoomIcon style={{fontSize:viewport.zoom,color:'lime'}} >Here</RoomIcon>
+        {pins.map(p=>{
+        <>    
+          {/* //markerstart */}
+        <Marker 
+      
+          latitude={28.612} //</Map>{28.612}
+          longitude={77.229}//{77.229}
+          color={'#FF0000'} 
+          //offsetLeft={10} 
+          //offsetTop={-20}
+          //offsetBottom={-30}
+          //pitchAlignment={'map'}
+          //scale={2}
+          draggable={true}
+          anchor="left">
+        
+         {/* <img src="./src/pngloc.jpg" alt='img'/> */}
+          <div
+            style={{fontSize:16, color:lime }}>YOU are Here
+          </div>
+          <RoomIcon 
+           style={{fontSize:viewport.zoom, color:'lime' }}>Here
+          </RoomIcon>
         </Marker>
-      {/* //markerend */ }
-    <button variant="contained">Hello</button>
-        {/* //adding popup */}
+       
+       {/* {showPopup &&( 
+          <Popup 
+           longitude={77.229}
+           latitude={28.612}
+            anchor="left"
+            //onClose={() => setShowPopup(false)}
+            >
+            <div className='card'>
+               You are here/
+               <label>Place</label>
+                <h4 className='place'>A</h4>
+               <label className='desc'>Review</label>
+                <p>Lorem ipsum.</p>
+               <label>Rating</label>
+                <div className='stars'>
+                  <StarBorderIcon className='star'/>
+                  <StarBorderIcon className='star'/>
+                  <StarBorderIcon className='star'/>
+                  <StarBorderIcon className='star'/>
+                  <StarBorderIcon className='star'/>
+                </div>
+               
+               <label>Description</label>
+               <span className='username'>Created by <b>Sagar</b> </span>
+               <span className='date'>Created by <b>1 hour ago</b> </span>
+               </div>
+          </Popup>
+        )} */}
+
+
+       </>
+       {/* //markerend */ }
+        })}
       
+        <button 
+          variant="contained">Hello Traveller
+        </button>
+       
+        {/* //adding popup */}
+        {/*
+        <Popup
+          latitude={50}
+          longitude={50}
+          closeButton={true}
+          closeOnClick={false}
+
+          anchor="left">     
+          <div className='popupbox'>
+            <label>Place</label>
+            <h3 className='place'>India Gate</h3>
+            <label>Review</label>
+            
+            <label>Rating</label>
+            <div className='Rating'>
+              <StarBorderIcon></StarBorderIcon>
+              <StarBorderIcon></StarBorderIcon>
+              <StarBorderIcon></StarBorderIcon>
+              <StarBorderIcon></StarBorderIcon>
+            
+            </div>
+              <label>Description</label>
+              <span className='username'>Created by<b>Sagar</b></span>
+              <span className='date'>1 week ago</span>
+            </div>
+        </Popup> */}
         
         {/* //end of popup */}
 
-    </Map>
+      </Map>
+    </div>
   );
-   <div>
-  HelloWorld!
-  </div> 
+  
 }
 
 export default App;
