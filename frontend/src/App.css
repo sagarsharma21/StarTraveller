@@ -1,16 +1,18 @@
 .card{
-    size: 400px;
-    height: auto;
+    /*size: 4000px;*/
+    min-width: 250px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
 label{
+    width: max-content;
     color:violet;
-    font-size: 16px;
-    border-bottom: 1px solid red;
-    margin: 4px 0;
+    font-size: 13px;
+    /*border-bottom: 1px solid red;*/
+    margin: 3px 0;
 }
 
 .desc {
@@ -24,7 +26,11 @@ color: orange;
 }
 
 .username {
-    font-size: 14;
+    font-size: 14px;
+}
+
+.date{
+    font-size: 12px;
 }
 
 
