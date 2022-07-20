@@ -19,6 +19,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 //import usestate
 import { useState } from 'react';
 import mapboxgl from 'mapbox-gl';
+import { height } from '@mui/system';
 
 
 //trying viewport
@@ -39,7 +40,9 @@ const popup = new mapboxgl.Popup({offset: popupOffsets, className: 'my-class'})
 // {}*/
 
 function App() {
-  const [pins,setPins] = useState([]);
+  //const [viewport, setViewport]= useState({ });
+
+  
   //start of this code snip
   const setViewport= useState({
     width:"100vw",
@@ -48,6 +51,20 @@ function App() {
     longitude:77,
     zoom:4,
   });
+
+  const [pins,setPins] = useState([]);
+  
+  // useEffect(() => {
+  //     const getPins = async () =>{
+  //       try{
+  //         const res =await axios.get("/pins");
+  //         setPins(res.data);
+          
+  //       } catch(err) {
+  //         console.log(err);
+  //       }
+  //     } ;
+  // },[]);
 //end of this code snip
 
  const [showPopup, setShowPopup]= React.useState(true);
