@@ -193,6 +193,7 @@ function App() {
                   <StarBorderIcon className='star'></StarBorderIcon>
                   <StarBorderIcon className='star'></StarBorderIcon>
                   <StarBorderIcon className='star'></StarBorderIcon>
+                  <StarBorderIcon className='star'></StarBorderIcon>
                 
                 </div>
               <label>Description</label><br></br>
