@@ -103,7 +103,7 @@ function App() {
           //pitchAlignment={'map'}
           //scale={2}
           draggable={true}
-          anchor="left">
+          anchor="top">
         
           {/* <img src="./src/pngloc.jpg" alt='img'/> */}
           <div
@@ -114,12 +114,8 @@ function App() {
           </RoomIcon>
         </Marker>
        
-       
-
-
-       </>
-       /* //adding popup */
-       /* {showPopup && (
+        {/* //adding popup */}
+        {showPopup && (
             <Popup className='popup' longitude={77.229} latitude={28.612}
             anchor="left"
             onClose={() => setShowPopup(false)}>
@@ -142,9 +138,13 @@ function App() {
               <span className='username'>Created by  <b>Sagar</b></span><br></br>
               <span className='date'>1 week ago</span>
             </div>
-          </Popup>)} */
+          </Popup>)} 
         
-        /* //end of popup */
+        {/* //end of popup */}
+
+
+       </>
+       
         ))}
       
         <button 
