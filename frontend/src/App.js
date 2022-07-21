@@ -55,9 +55,9 @@ function App() {
 //end of this code snip
 
  
- // Create a new marker.
-  const marker = new mapboxgl.Marker()
-    .setLngLat([77.229, 28.612]);
+  // Create a new marker.
+  // const marker = new mapboxgl.Marker()
+  //   .setLngLat([77.229, 28.612]);
   //edit 19/7-1
   
   //exit 19/7-1
@@ -103,7 +103,7 @@ function App() {
           draggable={true}
           anchor="left">
         
-         {/* <img src="./src/pngloc.jpg" alt='img'/> */}
+          {/* <img src="./src/pngloc.jpg" alt='img'/> */}
           <div
             style={{fontSize:16, color:lime }}>YOU are Here
           </div>
@@ -112,73 +112,12 @@ function App() {
           </RoomIcon>
         </Marker>
        
-       {/* {showPopup &&( 
-          <Popup 
-           longitude={77.229}
-           latitude={28.612}
-            anchor="left"
-            //onClose={() => setShowPopup(false)}
-            >
-            <div className='card'>
-               You are here/
-               <label>Place</label>
-                <h4 className='place'>A</h4>
-               <label className='desc'>Review</label>
-                <p>Lorem ipsum.</p>
-               <label>Rating</label>
-                <div className='stars'>
-                  <StarBorderIcon className='star'/>
-                  <StarBorderIcon className='star'/>
-                  <StarBorderIcon className='star'/>
-                  <StarBorderIcon className='star'/>
-                  <StarBorderIcon className='star'/>
-                </div>
-               
-               <label>Description</label>
-               <span className='username'>Created by <b>Sagar</b> </span>
-               <span className='date'>Created by <b>1 hour ago</b> </span>
-               </div>
-          </Popup>
-        )} */}
+       
 
 
        </>
-       
-        ))}
-      
-        <button 
-          variant="contained">Hello Traveller
-        </button>
-       
-        {/* //adding popup */}
-        
-        {/*
-        <Popup
-          latitude={50}
-          longitude={50}
-          closeButton={true}
-          closeOnClick={false}
-
-          anchor="left">     
-          <div className='popupbox'>
-            <label>Place</label>
-            <h3 className='place'>India Gate</h3>
-            <label>Review</label>
-            
-            <label>Rating</label>
-            <div className='Rating'>
-              <StarBorderIcon></StarBorderIcon>
-              <StarBorderIcon></StarBorderIcon>
-              <StarBorderIcon></StarBorderIcon>
-              <StarBorderIcon></StarBorderIcon>
-            
-            </div>
-              <label>Description</label>
-              <span className='username'>Created by<b>Sagar</b></span>
-              <span className='date'>1 week ago</span>
-            </div>
-        </Popup> */}
-          {/* {showPopup && (
+       /* //adding popup */
+       /* {showPopup && (
             <Popup className='popup' longitude={77.229} latitude={28.612}
             anchor="left"
             onClose={() => setShowPopup(false)}>
@@ -201,10 +140,16 @@ function App() {
               <span className='username'>Created by  <b>Sagar</b></span><br></br>
               <span className='date'>1 week ago</span>
             </div>
-          </Popup>)} */}
+          </Popup>)} */
         
-        {/* //end of popup */}
-
+        /* //end of popup */
+        ))}
+      
+        <button 
+          variant="contained">Hello Traveller
+        </button>
+       
+        
       </Map>
     </div>
   );
@@ -263,5 +208,61 @@ const popup = new mapboxgl.Popup({offset: popupOffsets, className: 'my-class'})
 .addTo(map);
 // {}
 
+{}
+{/* {showPopup &&( 
+          <Popup 
+           longitude={77.229}
+           latitude={28.612}
+            anchor="left"
+            //onClose={() => setShowPopup(false)}
+            >
+            <div className='card'>
+               You are here/
+               <label>Place</label>
+                <h4 className='place'>A</h4>
+               <label className='desc'>Review</label>
+                <p>Lorem ipsum.</p>
+               <label>Rating</label>
+                <div className='stars'>
+                  <StarBorderIcon className='star'/>
+                  <StarBorderIcon className='star'/>
+                  <StarBorderIcon className='star'/>
+                  <StarBorderIcon className='star'/>
+                  <StarBorderIcon className='star'/>
+                </div>
+               
+               <label>Description</label>
+               <span className='username'>Created by <b>Sagar</b> </span>
+               <span className='date'>Created by <b>1 hour ago</b> </span>
+               </div>
+          </Popup>
+        )} }{}
+{}
+{/*
+        <Popup
+          latitude={50}
+          longitude={50}
+          closeButton={true}
+          closeOnClick={false}
 
+          anchor="left">     
+          <div className='popupbox'>
+            <label>Place</label>
+            <h3 className='place'>India Gate</h3>
+            <label>Review</label>
+            
+            <label>Rating</label>
+            <div className='Rating'>
+              <StarBorderIcon></StarBorderIcon>
+              <StarBorderIcon></StarBorderIcon>
+              <StarBorderIcon></StarBorderIcon>
+              <StarBorderIcon></StarBorderIcon>
+            
+            </div>
+              <label>Description</label>
+              <span className='username'>Created by<b>Sagar</b></span>
+              <span className='date'>1 week ago</span>
+            </div>
+        </Popup> }
+{}
 */ 
