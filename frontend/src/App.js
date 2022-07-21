@@ -16,6 +16,7 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 
 //import usestate
 import { useState } from 'react';
+import { useEffect } from 'react';
 import mapboxgl from 'mapbox-gl';
 import { height } from '@mui/system';
 
@@ -41,17 +42,18 @@ function App() {
 
   const [pins,setPins] = useState([]);
   
-  // useEffect(() => {
-  //     const getPins = async () =>{
-  //       try{
-  //         const res =await axios.get("/pins");
-  //         setPins(res.data);
+  useEffect(() => {
+      const getPins = async () =>{
+        try{
+          const res =await axios.get("/pins");
+          setPins(res.data);
           
-  //       } catch(err) {
-  //         console.log(err);
-  //       }
-  //     } ;
-  // },[]);
+        } catch(err) {
+          console.log(err);
+        }
+      } ;
+      getPins()
+  },[]);
 //end of this code snip
 
  
