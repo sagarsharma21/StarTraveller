@@ -7,7 +7,7 @@ import { Popup } from 'react-map-gl';
 import RoomIcon from '@mui/icons-material/Room';
 import { lime } from '@mui/material/colors';
 import "./App.css";
-import axios from "axios";
+//import axios from "axios";
 //import {format} from "timeago.js";
 
 //importing star icon from material-ui
@@ -150,6 +150,7 @@ function App() {
         </button>
        
         {/* //adding popup */}
+        
         {/*
         <Popup
           latitude={50}

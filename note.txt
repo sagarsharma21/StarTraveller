@@ -13,3 +13,5 @@ This is first notepad file!!
 //Icon appeared, works fine
 //git updated
 
+//20/07/22 22:33 App crashed
+//21/07/22 Restored using Version Control
