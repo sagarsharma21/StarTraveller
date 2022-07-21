@@ -1,13 +1,14 @@
 import * as React from 'react';
 import Map, { Marker } from 'react-map-gl';
+import "./App.css";
 
 //importing marker icon
 import { Popup } from 'react-map-gl';
 
 import RoomIcon from '@mui/icons-material/Room';
 import { lime } from '@mui/material/colors';
-import "./App.css";
-//import axios from "axios";
+
+import axios from "axios";
 //import {format} from "timeago.js";
 
 //importing star icon from material-ui
@@ -177,8 +178,8 @@ function App() {
               <span className='date'>1 week ago</span>
             </div>
         </Popup> */}
-          {showPopup && (
-            <Popup longitude={77.229} latitude={28.612}
+          {/* {showPopup && (
+            <Popup className='popup' longitude={77.229} latitude={28.612}
             anchor="left"
             onClose={() => setShowPopup(false)}>
             You are here
@@ -200,7 +201,7 @@ function App() {
               <span className='username'>Created by  <b>Sagar</b></span><br></br>
               <span className='date'>1 week ago</span>
             </div>
-          </Popup>)}
+          </Popup>)} */}
         
         {/* //end of popup */}
 
