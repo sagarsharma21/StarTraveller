@@ -17,8 +17,8 @@ import StarBorderIcon from '@mui/icons-material/StarBorder';
 //import usestate
 import { useState } from 'react';
 import { useEffect } from 'react';
-import mapboxgl from 'mapbox-gl';
-import { height } from '@mui/system';
+//import mapboxgl from 'mapbox-gl';
+//import { height } from '@mui/system';
 
 
 //trying viewport
