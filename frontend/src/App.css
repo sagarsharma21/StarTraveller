@@ -36,3 +36,36 @@ color: orange;
     font-size: 12px;
 }
 
+
+
+form{
+   width: 250px;
+   height: 250px; 
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   font-size: small;
+   initial-value: 1 ;
+   max-width: fit-content;
+}
+
+input,textarea{
+     border:none;
+     max-width: fit-content;
+     border-bottom: 1px solid grey;
+
+}
+
+input::placeholder, textarea::placeholder{
+    font-size: 12px;
+    color: rgb(180,150,150);
+}
+
+.submitButton{
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    color:white;
+    background-color: royalblue;
+    cursor: pointer;
+}

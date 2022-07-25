@@ -89,7 +89,7 @@ function App() {
             {...viewport}
             onViewportChange={(nextViewport)=>setViewport(nextViewport)}
             mapStyle="mapbox://styles/mapbox/streets-v9"
-              onDblClick={handleAddClick}
+              onDblClick={handleAddClick} 
 
           initialViewState=
             {{
@@ -178,10 +178,29 @@ function App() {
           latitude={newPlace.lat} longitude={newPlace.lng}
           anchor="bottom"
           draggable="true"
+          closeOnClick="true"
           onClose={() => setNewPlace(null)}
           // onClose={() => setShowPopup(false)}
           >
           You are here
+            <div>
+              <form>
+                <label>Title</label>
+                  <input placeholder='Enter title'></input>
+                <label>Review</label>
+                  <textarea placeholder='How was your experiences' rows={1}></textarea>
+                <label>Rating</label>
+                  <select>
+                    <option value={1}>1</option>
+                    <option value={2}>2</option>
+                    <option value={3}>3</option>
+                    <option value={4}>4</option>
+                    <option value={5}>5</option>
+                  </select>
+                <label></label>
+                <button type='submitButton'>Add Location</button>
+              </form>
+            </div>
         </Popup>))}
 
          
