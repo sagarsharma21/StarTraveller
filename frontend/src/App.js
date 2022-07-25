@@ -9,7 +9,6 @@ import RoomIcon from '@mui/icons-material/Room';
 import { lime } from '@mui/material/colors';
 
 import axios from "axios";
-//import {format} from "timeago.js";
 
 //importing star icon from material-ui
 import StarBorderIcon from '@mui/icons-material/StarBorder';
@@ -19,6 +18,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 //import mapboxgl from 'mapbox-gl';
 //import { height } from '@mui/system';
+import {format} from "timeago.js";
 
 
 //trying viewport
@@ -39,9 +39,11 @@ function App() {
   });
 
   //const [showPopup, setShowPopup]= React.useState(true);
-
+  const currentUser = "Sahil"
   const [pins,setPins] = useState([]);
-  
+  const [currentPlaceId, setCurrentPlaceId] = useState(null);
+  const [newPlace, setNewPlace] = useState(null);
+
   useEffect(() => {
       const getPins = async () =>{
         try{
@@ -56,13 +58,27 @@ function App() {
   },[]);
 //end of this code snip
 
- 
+//  const handleMarkerClick = (id,long,lat) => {
+//   setCurrentPlaceId(id);
+//  };
+
+ const handleAddClick = (e) =>{
+    console.log(e);
+    const {lng,lat} =e.lngLat;
+    setNewPlace ({
+       lng:lng  ,lat:lat
+    });
+
+ };
   // Create a new marker.
   // const marker = new mapboxgl.Marker()
   //   .setLngLat([77.229, 28.612]);
-  //edit 19/7-1
-  
-  //exit 19/7-1
+  //edit 25/7-1
+  const handleMarkerClick = (id,long,lat) => {
+    setCurrentPlaceId(id);
+    setViewport({...viewport, latitude:lat,longitude:long})
+   };
+  //exit 25/7-1
   
 
 
@@ -73,19 +89,20 @@ function App() {
             {...viewport}
             onViewportChange={(nextViewport)=>setViewport(nextViewport)}
             mapStyle="mapbox://styles/mapbox/streets-v9"
+              onDblClick={handleAddClick}
 
-        initialViewState=
-          {{
-            latitude:28.612,
-            longitude:77.229,
-            zoom:14
-          }}
+          initialViewState=
+            {{
+              latitude:28.612,
+              longitude:77.229,
+              zoom:4
+            }}
 
           
-        style=
-          {{
-            width:"100vw",height:"100vh"
-          }}
+          style=
+            {{
+              width:"100vw",height:"100vh"
+            }}
       >    
 
       
@@ -94,8 +111,8 @@ function App() {
           {/* //markerstart */}
         <Marker 
       
-          latitude={28.612} //</Map>{28.612}
-          longitude={77.229}//{77.229}
+          latitude={p.lat} //</Map>{28.612}
+          longitude={p.long}//{77.229}
           color={'#FF0000'} 
           //offsetLeft={10} 
           //offsetTop={-20}
@@ -110,21 +127,25 @@ function App() {
             style={{fontSize:16, color:lime }}>YOU are Here
           </div>
           <RoomIcon 
-           style={{fontSize:viewport.zoom*7, color:'lime' }}>Here
+           style={{fontSize:viewport.zoom*7,fontSize:28 ,color:p.username===currentUser? "steelblue":"burlywood", cursor:"pointer" }}
+           onClick={() => handleMarkerClick(p._id, p.long, p.lat)}
+           onClose={() => setCurrentPlaceId(null)}
+           >Here
           </RoomIcon>
         </Marker>
        
         {/* //adding popup */}
-        {showPopup && (
-            <Popup className='popup' longitude={77.229} latitude={28.612}
+         {p._id === currentPlaceId && (
+        showPopup && (
+            <Popup className='popup' longitude={p.long} latitude={p.lat}
             anchor="left"
-            onClose={() => setShowPopup(false)}>
+             onClose={() => setShowPopup(false)}>
             You are here
             <div className='popupbox'>
               <label>Place</label>
-                <h3 className='place'>India Gate</h3>
+                <h3 className='place'>{p.title}</h3>
               <label>Review</label>
-                <p className='desc'> <textarea fontSize="x-small" rows={1}></textarea> </p>
+                <p className='desc'> <textarea fontSize="x-small" rows={1}>{p.desc}</textarea> </p>
               <label>Rating</label>
                 <div className='stars'>
                   <StarBorderIcon className='star'></StarBorderIcon>
@@ -135,23 +156,35 @@ function App() {
                 
                 </div>
               <label>Description</label><br></br>
-              <span className='username'>Created by  <b>Sagar</b></span><br></br>
-              <span className='date'>1 week ago</span>
+              <span className='username'>Created by  <b>{p.username}</b></span><br></br>
+              <span className='date'>{format(p.createdAt)}</span>
             </div>
-          </Popup>)} 
-        
+          </Popup>) 
+          )}
         {/* //end of popup */}
 
-
+  
        </>
        
-        ))}
+        ))}  
       
         <button 
           variant="contained">Hello Traveller
         </button>
        
-        
+        {newPlace && (showPopup && (
+        <Popup 
+         
+          latitude={newPlace.lat} longitude={newPlace.lng}
+          anchor="bottom"
+          draggable="true"
+          onClose={() => setNewPlace(null)}
+          // onClose={() => setShowPopup(false)}
+          >
+          You are here
+        </Popup>))}
+
+         
       </Map>
     </div>
   );

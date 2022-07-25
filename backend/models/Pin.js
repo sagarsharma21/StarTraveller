@@ -16,15 +16,24 @@ const PinSchema = new mongoose.Schema({
         require:true,
         min:3, 
     },
-    rating: {
+    rating:{
         type:Number,
         require:true,
         min:0,
         max:5,
-      }
+    },
+    long: {
+        type:Number,
+        require:true
+    },
+    lat: {
+        type:Number,
+        require:true
+    }
+
     },
 
-{timestamps: true}
+    {timestamps: true}
 
 );
 
