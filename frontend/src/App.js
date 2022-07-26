@@ -27,11 +27,12 @@ import Login from "./components/login";
 
 
 function App() {
+  const myStorage= window.localStorage;
   //const [viewport, setViewport]= useState({ });
   //start of this code snip
   const [showPopup, setShowPopup] = React.useState(true);
 
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(myStorage.getItem("user"));
   const [pins,setPins] = useState([]);
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
   const [newPlace, setNewPlace] = useState(null);
@@ -70,7 +71,7 @@ function App() {
 //   setCurrentPlaceId(id);
 //  };
 
- const handleAddClick = async (e) =>{
+ const handleAddClick = async (e) => {
     console.log(e);
     const {lng,lat} =await (e.lngLat);
     const lat1=lat.toFixed(3);
@@ -93,7 +94,7 @@ function App() {
    };
   //exit 25/7-1
   
-  const handleSubmit= async (e)=> {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newPin = {
       username:currentUser,
@@ -112,6 +113,11 @@ function App() {
     catch(err){
       console.log(err)
     }
+  };
+
+  const handleLogout = () => {
+    myStorage.removeItem("user");
+    setCurrentUser(null);
   };
 
   return (
@@ -238,17 +244,18 @@ function App() {
             </div>
         </Popup>))}
 
-         {currentUser ? (<button className="button logout">Log out</button>) : (       
-            <div className='buttons'>
-              <button className="button login" onClick={()=>setShowLogin(true)}>Log in</button>
-              <button className="button register" onClick={()=>setShowRegister(true)}>Register</button>
-            </div>
+         {currentUser ? (
+            <button className="button logout" onClick={handleLogout}>Log out</button>) : (       
+              <div className='buttons'>
+                <button className="button login" onClick={()=>setShowLogin(true)}>Log in</button>
+                <button className="button register" onClick={()=>setShowRegister(true)}>Register</button>
+              </div>
           )}
           
           {showRegister && 
             <Register setShowRegister={setShowRegister} />}
           {showLogin && 
-            <Login setShowLogin={setShowLogin} />}  
+            <Login setShowLogin={setShowLogin} myStorage={myStorage} setCurrentUser={setCurrentUser} />}  
 
          <Register/>
          </Map>
