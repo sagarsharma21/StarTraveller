@@ -49,12 +49,13 @@ form{
    max-width: fit-content;
 }
 
-input,textarea{
+input,textarea,select{
      border:none;
      max-width: fit-content;
      border-bottom: 1px solid grey;
 
 }
+
 
 input::placeholder, textarea::placeholder{
     font-size: 12px;
@@ -69,3 +70,42 @@ input::placeholder, textarea::placeholder{
     background-color: royalblue;
     cursor: pointer;
 }
+
+.button{
+    border: none;
+    padding:5px;
+    color:azure ;
+    cursor: pointer;
+}
+
+.login{
+    background-color: aquamarine;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+.logout{
+    background-color: coral;
+    border-radius: 10px;
+}
+.register{
+    background-color: violet;
+    border-radius: 10px;
+}
+
+.buttons,.logout{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+/* .login{
+    width: fit-content;
+    position: absolute;
+    top: 30px;
+    right: 80px;
+}
+.register{
+    width: fit-content;
+    position: absolute;
+    top: 30px;
+    right: 100 px;
+} */
